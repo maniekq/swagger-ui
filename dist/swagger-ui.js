@@ -1368,8 +1368,8 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     }
 
     HeaderView.prototype.events = {
-      'click #show-pet-store-icon': 'showPetStore',
-      'click #show-wordnik-dev-icon': 'showWordnikDev',
+      'click #show-taskroo-auth-icon': 'showTaskRooAuth',
+      'click #show-taskroo-api-icon': 'showTaskRooApi',
       'click #explore': 'showCustom',
       'keyup #input_baseUrl': 'showCustomOnKeyup',
       'keyup #input_apiKey': 'showCustomOnKeyup'
@@ -1377,15 +1377,15 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 
     HeaderView.prototype.initialize = function() {};
 
-    HeaderView.prototype.showPetStore = function(e) {
+    HeaderView.prototype.showTaskRooAuth = function(e) {
       return this.trigger('update-swagger-ui', {
-        url: "http://petstore.swagger.wordnik.com/api/api-docs"
+        url: "http://taskroo.com/auth/api-docs"
       });
     };
 
-    HeaderView.prototype.showWordnikDev = function(e) {
+    HeaderView.prototype.showTaskRooApi = function(e) {
       return this.trigger('update-swagger-ui', {
-        url: "http://api.wordnik.com/v4/resources.json"
+        url: "http://taskroo.com/api/api-docs"
       });
     };
 

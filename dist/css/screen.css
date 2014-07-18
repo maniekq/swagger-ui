@@ -268,6 +268,8 @@
 }
 .swagger-section .swagger-ui-wrap .icon-btn {
   cursor: pointer;
+  color: white;
+  margin-top: 7px !important;
 }
 .swagger-section .swagger-ui-wrap .info_title {
   padding-bottom: 10px;
@@ -1158,16 +1160,17 @@
   cursor: pointer;
 }
 .swagger-section #header {
-  background-color: #89bf04;
+  background-color: black;
   padding: 14px;
 }
-.swagger-section #header a#logo {
+.swagger-section #header div#logo {
   font-size: 1.5em;
   font-weight: bold;
   text-decoration: none;
-  background: transparent url(../images/logo_small.png) no-repeat left center;
-  padding: 20px 0 20px 40px;
+  background: transparent url(../images/taskroo-logo-black-bg-35.png) no-repeat left center;
+  padding: 20px 0 20px 150px;
   color: white;
+  display: inline;
 }
 .swagger-section #header form#api_selector {
   display: block;

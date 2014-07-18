@@ -25,7 +25,7 @@
   <script type="text/javascript">
     $(function () {
       window.swaggerUi = new SwaggerUi({
-      url: "http://petstore.swagger.wordnik.com/api/api-docs",
+      url: "http://taskroo.com/auth/api-docs",
       dom_id: "swagger-ui-container",
       supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
       onComplete: function(swaggerApi, swaggerUi){
@@ -50,12 +50,25 @@
       docExpansion: "none"
     });
 
+var guid = (function() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+               .toString(16)
+               .substring(1);
+  }
+  return function() {
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+           s4() + '-' + s4() + s4() + s4();
+  };
+})();
+
     $('#input_apiKey').change(function() {
       var key = $('#input_apiKey')[0].value;
       log("key: " + key);
       if(key && key.trim() != "") {
         log("added key " + key);
-        window.authorizations.add("key", new ApiKeyAuthorization("api_key", key, "query"));
+      	// window.authorizations.add("key", new ApiKeyAuthorization("api_key", key, "query"));
+	window.authorizations.add("key", new ApiKeyAuthorization("Authorization", "TaskRooAuth realm=\"taskroo@aetas.pl\",tokenKey=\""+key+"\",cnonce=\""+guid()+"\"", "header"));
       }
     })
     window.swaggerUi.load();
@@ -66,16 +79,16 @@
 <body class="swagger-section">
 <div id='header'>
   <div class="swagger-ui-wrap">
-    <a id="logo" href="http://swagger.wordnik.com">swagger</a>
+    <a href="http://www.taskroo.com"><div id="logo"></div></a>
     <form id='api_selector'>
       <div class='input icon-btn'>
-        <img id="show-pet-store-icon" src="images/pet_store_api.png" title="Show Swagger Petstore Example Apis">
+        <div id="show-taskroo-auth-icon">Auth</div>
       </div>
       <div class='input icon-btn'>
-        <img id="show-wordnik-dev-icon" src="images/wordnik_api.png" title="Show Wordnik Developer Apis">
+        <div id="show-taskroo-api-icon">API</div>
       </div>
       <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
-      <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
+      <div class='input'><input placeholder="session id" id="input_apiKey" name="apiKey" type="text"/></div>
       <div class='input'><a id="explore" href="#">Explore</a></div>
     </form>
   </div>
